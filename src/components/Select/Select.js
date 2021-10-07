@@ -5,7 +5,7 @@ import { COLORS, WEIGHTS } from '../../constants';
 
 import Icon from '../Icon';
 
-const Select = ({ label, value, children, ...delegated }) => {
+const Select = ({ label, value, children, className , ...delegated }) => {
   const childArray = React.Children.toArray(children);
   const selectedChild = childArray.find(
     (child) => child.props.value === value
@@ -14,7 +14,7 @@ const Select = ({ label, value, children, ...delegated }) => {
   const displayedValue = selectedChild.props.children;
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <VisibleLabel>{label}</VisibleLabel>
 
       <SelectWrapper>
@@ -65,7 +65,7 @@ const DisplayedBit = styled.span`
   font-size: 1rem;
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.gray[900]};
-  padding: 12px 42px 12px 16px;
+  padding: 9px 42px 9px 16px;
   border-radius: 8px;
   pointer-events: none;
 

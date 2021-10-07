@@ -76,6 +76,10 @@ html {
 html, body, #root {
   height: 100%;
 }
+
+*{
+  /* outline: 1px solid red; */
+}
 `;
 
 export default GlobalStyles;

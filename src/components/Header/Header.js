@@ -26,13 +26,22 @@ const Header = () => {
         </LogoWrapper>
 
         <DesktopNav>
+          <NavLink href='/sale'>Salesss </NavLink>
+          <NavLink href='/new'>New&nbsp;Releases New</NavLink>
+          <NavLink href='/men'>Men And Boys</NavLink>
+          <NavLink href='/women'>Women and Girls</NavLink>
+          <NavLink href='/kids'>Kids</NavLink>
+          <NavLink href='/collections'>Collections</NavLink>
+        </DesktopNav>
+
+        {/* <DesktopNav>
           <NavLink href='/sale'>Sale</NavLink>
           <NavLink href='/new'>New&nbsp;Releases</NavLink>
           <NavLink href='/men'>Men</NavLink>
           <NavLink href='/women'>Women</NavLink>
           <NavLink href='/kids'>Kids</NavLink>
           <NavLink href='/collections'>Collections</NavLink>
-        </DesktopNav>
+        </DesktopNav> */}
 
         <MobileActions>
           <ShoppingBagButton>
@@ -67,6 +76,11 @@ const MainHeader = styled.div`
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
 
+  @media ${QUERIES.laptopAndDown} {
+    overflow-y: clip;
+    overflow-x: auto;
+  }
+
   @media ${QUERIES.tableAndDown} {
     border-top: 4px solid ${COLORS.gray[900]};
     align-items: center;
@@ -81,8 +95,12 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(1rem, 10vw - 5.75rem, 3.5rem);
   margin: 0px 48px;
+
+  @media ${QUERIES.laptopAndDown} {
+    margin-right: 0;
+  }
 
   @media ${QUERIES.tableAndDown} {
     display: none;
@@ -100,7 +118,8 @@ const MobileActions = styled.div`
 
 const LogoWrapper = styled.div`
   flex: 1;
-
+  @media ${QUERIES.laptopAndDown} {
+  }
   @media ${QUERIES.tableAndDown} {
     flex: revert;
   }
@@ -112,6 +131,9 @@ const ShoppingBagButton = styled(UnstyledButton)`
 
 const Filler = styled.div`
   flex: 1;
+  @media ${QUERIES.laptopAndDown} {
+    /* flex: 0 9999999 0; */
+  }
 
   @media ${QUERIES.tableAndDown} {
     display: none;
@@ -124,6 +146,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  white-space: nowrap;
 
   &:first-of-type {
     color: ${COLORS.secondary};
