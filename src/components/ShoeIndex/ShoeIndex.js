@@ -44,11 +44,10 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
-  
 `
 
 const LeftColumn = styled.div`
-  flex-basis: 248px;
+  flex: 0 9999999 248px;
   @media ${QUERIES.tableAndDown} {
     display: none;
   }
@@ -56,6 +55,7 @@ const LeftColumn = styled.div`
 
 const MainColumn = styled.div`
   flex: 1;
+  flex-basis: 1000px
 `
 
 const MobileShoeBreadcrumbs = styled(ShoeBreadcrumbs)`

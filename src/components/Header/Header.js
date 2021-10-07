@@ -52,7 +52,7 @@ const Header = () => {
             <Icon id='search' strokeWidth={2} />
             <VisuallyHidden>Search</VisuallyHidden>
           </UnstyledButton>
-          <UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon id='menu' strokeWidth={2} />
             <VisuallyHidden>Menu</VisuallyHidden>
           </UnstyledButton>
@@ -73,12 +73,12 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow:auto;
 
   @media ${QUERIES.laptopAndDown} {
-    overflow-y: clip;
-    overflow-x: auto;
+    /* overflow-y: clip;
+    overflow-x: auto; */
   }
 
   @media ${QUERIES.tableAndDown} {
@@ -99,7 +99,7 @@ const DesktopNav = styled.nav`
   margin: 0px 48px;
 
   @media ${QUERIES.laptopAndDown} {
-    margin-right: 0;
+    /* margin-right: 0; */
   }
 
   @media ${QUERIES.tableAndDown} {
