@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import { WEIGHTS, QUERIES, COLORS } from '../../constants'
+import { WEIGHTS, QUERIES } from '../../constants'
 
 import ShoeBreadcrumbs from '../ShoeBreadcrumbs'
 import Select from '../Select'
@@ -84,7 +84,7 @@ const Header = styled.header`
 const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.bold};
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   @media ${QUERIES.tableAndDown} {
     line-height: 1;
   }
