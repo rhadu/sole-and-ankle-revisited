@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { WEIGHTS } from '../../constants'
 
-const NavLink = ({ href, children }) => {
+const NavLink = ({ children, ...delegated }) => {
   return (
-    <Wrapper href={href}>
+    <Wrapper {...delegated}>
       <Text>{children}</Text>
       <FlippedText>{children}</FlippedText>
     </Wrapper>

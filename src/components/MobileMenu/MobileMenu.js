@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import styled from 'styled-components/macro'
+import styled, { keyframes } from 'styled-components/macro'
 import { DialogOverlay, DialogContent } from '@reach/dialog'
 
 import { QUERIES, WEIGHTS } from '../../constants'
@@ -15,7 +15,8 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   }
 
   return (
-    <Overlay onClick={onDismiss}>
+    <Wrapper onClick={onDismiss}>
+      <Backdrop />
       <Content>
         <CloseButton onClick={onDismiss}>
           <Icon id='close' strokeWidth={2} />
@@ -23,32 +24,83 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
         </CloseButton>
         <Filler />
         <Navigation>
-          <a href='/sale'>Sale</a>
-          <a href='/new'>New&nbsp;Releases</a>
-          <a href='/men'>Men</a>
-          <a href='/women'>Women</a>
-          <a href='/kids'>Kids</a>
-          <a href='/collections'>Collections</a>
+          <NavLink index='1' href='/sale'>
+            Sale
+          </NavLink>
+          <NavLink index='2' href='/new'>
+            New&nbsp;Releases
+          </NavLink>
+          <NavLink index='3' href='/men'>
+            Men
+          </NavLink>
+          <NavLink index='4' href='/women'>
+            Women
+          </NavLink>
+          <NavLink index='5' href='/kids'>
+            Kids
+          </NavLink>
+          <NavLink index='6' href='/collections'>
+            Collections
+          </NavLink>
         </Navigation>
         <Footer>
-          <a href='/terms'>Terms and Conditions</a>
-          <a href='/privacy'>Privacy Policy</a>
-          <a href='/contact'>Contact Us</a>
+          <NavLink index='8' href='/terms'>Terms and Conditions</NavLink>
+          <NavLink index='10' href='/privacy'>Privacy Policy</NavLink>
+          <NavLink index='12' href='/contact'>Contact Us</NavLink>
         </Footer>
       </Content>
-    </Overlay>
+    </Wrapper>
   )
 }
 
-const Overlay = styled(DialogOverlay)`
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  60%{
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+`
+
+const moveVertically = keyframes`
+    0% {
+        transform : translateX(calc(50% + 300px));
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform : translateX(0px);
+    }
+`
+
+const Wrapper = styled(DialogOverlay)`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: hsl(220deg 5% 40% / 0.8);
   display: flex;
   justify-content: flex-end;
+`
+
+const Backdrop = styled.div`
+  position:absolute;
+  height: 100%;
+  width: 100%;
+  background: hsl(220deg 5% 30% / 0.8);
+  animation: ${fadeIn} 500ms ease both;
 `
 
 const Content = styled(DialogContent)`
@@ -59,6 +111,9 @@ const Content = styled(DialogContent)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  animation: ${slideIn} 500ms ease both;
+
   @media ${QUERIES.laptopAndDown} {
     padding-right: 32px;
   }
@@ -69,8 +124,8 @@ const Content = styled(DialogContent)`
 
 const CloseButton = styled(UnstyledButton)`
   position: absolute;
-  right:16px;
-  top:26px;
+  right: 16px;
+  top: 26px;
 `
 
 const Navigation = styled.nav`
@@ -87,11 +142,19 @@ const Navigation = styled.nav`
   }
 `
 
+const NavLink = styled.a`
+  animation: ${moveVertically} 200ms ease both;
+  animation-delay: ${(props) => props.index * 50}ms;
+`
+
 const Footer = styled.footer`
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  /* animation: ${fadeIn} 400ms ease both;
+  animation-delay: 500ms; */
 
   & a {
     text-decoration: none;

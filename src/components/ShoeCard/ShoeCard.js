@@ -81,18 +81,21 @@ const ImageContainer = styled.div`
   overflow: hidden;
   border-radius: 16px 16px 4px 4px;
 `
-
 const Image = styled.img`
   width: 100%;
+  display: block;
   transition: transform 500ms, filter 800ms;
   transform-origin: 50% 80%;
-  display: block;
   will-change: transform;
+  filter: brightness(90%);
+
   
 
-  ${ImageContainer}:hover & {
+  ${Link}:hover &,
+  ${Link}:focus & {
     transform: scale(1.1);
-    transition: transform 200ms, filter 200ms;
+    transition: transform 200ms, filter 400ms;
+    filter: brightness(100%)
   }
 `
 
@@ -140,7 +143,7 @@ const Flag = styled.div`
   transition: filter 500ms;
   will-change: transform;
 
-  ${ImageWrapper}:hover & {
+  ${Link}:hover & {
     transition: filter 200ms;
   }
 `
@@ -148,14 +151,14 @@ const Flag = styled.div`
 const SaleFlag = styled(Flag)`
   background-color: var(--color-primary);
 
-  ${ImageWrapper}:hover & {
+  ${Link}:hover & {
     filter: drop-shadow(0px 1px 6px var(--color-primary));
   }
 `
 const NewFlag = styled(Flag)`
   background-color: var(--color-secondary);
 
-  ${ImageWrapper}:hover & {
+  ${Link}:hover & {
     filter: drop-shadow(0px 1px 6px var(--color-secondary));
   }
 `

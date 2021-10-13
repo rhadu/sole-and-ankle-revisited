@@ -27,12 +27,12 @@ const Header = () => {
         </LogoWrapper>
 
         <DesktopNav>
-          <NavLinkBorder href='/sale'>Sales </NavLinkBorder>
-          <NavLinkBorder href='/new'>New&nbsp;Releases</NavLinkBorder>
-          <NavLinkBorder href='/men'>Men</NavLinkBorder>
-          <NavLinkBorder href='/women'>Women</NavLinkBorder>
-          <NavLinkBorder href='/kids'>Kids</NavLinkBorder>
-          <NavLinkBorder href='/collections'>Collections</NavLinkBorder>
+          <NavLink href='/sale'>Sales </NavLink>
+          <NavLink href='/new'>New&nbsp;Releases</NavLink>
+          <NavLink href='/men'>Men</NavLink>
+          <NavLink href='/women'>Women</NavLink>
+          <NavLink href='/kids'>Kids</NavLink>
+          <NavLink href='/collections'>Collections</NavLink>
         </DesktopNav>
 
         {/* <DesktopNav>
