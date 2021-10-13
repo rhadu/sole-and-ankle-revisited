@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 
-import {QUERIES, WEIGHTS } from '../../constants'
+import { QUERIES, WEIGHTS } from '../../constants'
 import Logo from '../Logo'
 import SuperHeader from '../SuperHeader'
 import MobileMenu from '../MobileMenu'
 import UnstyledButton from '../UnstyledButton'
 import Icon from '../Icon'
 import VisuallyHidden from '../VisuallyHidden'
+import NavLink from '../NavLink/NavLink'
 
 const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false)
@@ -26,12 +27,12 @@ const Header = () => {
         </LogoWrapper>
 
         <DesktopNav>
-          <NavLink href='/sale'>Salesss </NavLink>
-          <NavLink href='/new'>New&nbsp;Releases New</NavLink>
-          <NavLink href='/men'>Men And Boys</NavLink>
-          <NavLink href='/women'>Women and Girls</NavLink>
-          <NavLink href='/kids'>Kids</NavLink>
-          <NavLink href='/collections'>Collections</NavLink>
+          <NavLinkBorder href='/sale'>Sales </NavLinkBorder>
+          <NavLinkBorder href='/new'>New&nbsp;Releases</NavLinkBorder>
+          <NavLinkBorder href='/men'>Men</NavLinkBorder>
+          <NavLinkBorder href='/women'>Women</NavLinkBorder>
+          <NavLinkBorder href='/kids'>Kids</NavLinkBorder>
+          <NavLinkBorder href='/collections'>Collections</NavLinkBorder>
         </DesktopNav>
 
         {/* <DesktopNav>
@@ -74,7 +75,7 @@ const MainHeader = styled.div`
   align-items: baseline;
   padding: 18px 32px;
   border-bottom: 1px solid var(--color-gray-300);
-  overflow:auto;
+  overflow: auto;
 
   @media ${QUERIES.laptopAndDown} {
     /* overflow-y: clip;
@@ -140,16 +141,45 @@ const Filler = styled.div`
   }
 `
 
-const NavLink = styled.a`
+const NavLinkBorder = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
   white-space: nowrap;
+  position: relative;
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+
+ 
+
+  &::after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 4px;
+    height: 1px;
+    background: var(--color-gray-700);
+    content: '';
+    opacity: 0;
+    transition: width 0.2s, height 0.4s, opacity 0.4s, transform 0.4s;
+    transform: translateY(10px);
+  }
+  &:first-of-type::after {
+    background: var(--color-secondary);
+  }
+  &:hover::after {
+    height: 0.15em;
+    width: calc(100% + 4px);
+    left:-2px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: width 0.2s, height 0.2s, opacity 0.2s, transform 0.2s;
   }
 `
 
